@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Rain's Modding Portfolio</title>
 
-<!-- Stylish fonts for a professional look -->
+<!-- Stylish, professional fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Raleway:wght@300;600&display=swap" rel="stylesheet">
 
 <style>
@@ -17,10 +17,10 @@ body {
   overflow-x: hidden;
   position: relative;
   min-height: 100vh;
-  background: #0d0d0d;
+  background: #0d0d0d; /* fallback background */
 }
 
-/* Rain container with fade-in/out control if needed */
+/* Rain container */
 .rain-container {
   position: fixed;
   top: 0; left: 0;
@@ -29,39 +29,38 @@ body {
   pointer-events: none;
   z-index: -1;
   overflow: hidden;
-  /* Remove any transition for seamless rain */
 }
 
-/* Raindrops style and animation: continuous, loop */
+/* Raindrops styled in red */
 .raindrop {
   position: absolute;
   bottom: 100%;
   width: 2px;
   height: var(--height);
-  background: linear-gradient(to bottom, #66ccff, transparent);
+  /* Changed to bright red */
+  background: linear-gradient(to bottom, #ff0000, transparent);
   opacity: 0.5;
   border-radius: 1px;
   transform: translateY(0) rotate(var(--rotation));
   animation: fall linear infinite;
   animation-duration: var(--duration);
-  /* Optional: add a slight horizontal sway for realism */
-  /* animation-name: fall sway; */
 }
 
-/* Keyframes for falling rain */
+/* Falling animation */
 @keyframes fall {
   0% { transform: translateY(0) rotate(var(--rotation)); opacity: 0.5; }
   100% { transform: translateY(110vh) rotate(var(--rotation)); opacity: 0; }
 }
 
-/* Main title styling */
+/* Header style with dark red as primary color */
 h1 {
   font-family: 'Poppins', sans-serif;
   font-size: 3.8em;
   text-align: center;
   margin: 0 0 20px;
   padding: 50px 20px 20px;
-  color: #006699;
+  /* Dark red primary color */
+  color: #8B0000;
   letter-spacing: 2px;
   text-shadow: 2px 2px 12px rgba(0,0,0,0.9);
   animation: glow 2s infinite alternate;
@@ -99,14 +98,14 @@ h1 {
   box-shadow: 0 15px 40px rgba(0,0,0,0.8);
 }
 
-/* Section headings styling */
+/* Headings styling with dark red accent */
 h2 {
   font-family: 'Raleway', sans-serif;
   font-size: 2em;
   margin-bottom: 15px;
-  border-bottom: 3px solid #006699;
+  border-bottom: 3px solid #8B0000;
   padding-bottom: 8px;
-  color: #006699;
+  color: #8B0000;
   position: relative;
   display: inline-block;
 }
@@ -115,7 +114,7 @@ h2::after {
   display: block;
   height: 4px;
   width: 60px;
-  background-color: #3399cc;
+  background-color: #A0522D; /* dark orange-brown for contrast */
   margin-top: 10px;
   border-radius: 2px;
   animation: pulseLine 2s infinite;
@@ -146,10 +145,10 @@ li::before {
   top: 50%;
   transform: translateY(-50%);
   font-size: 1.5em;
-  color: #3399cc;
+  color: #8B0000;
 }
 
-/* Project cards styling */
+/* Project card styles */
 .project {
   background: rgba(255,255,255,0.02);
   padding: 20px;
@@ -167,19 +166,19 @@ li::before {
   font-weight: 700;
   font-size: 1.4em;
   margin-bottom: 10px;
-  color: #00aaff;
+  color: #FF0000;
   text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
 }
 
 /* Link styles */
 a {
-  color: #3399cc;
+  color: #FF0000;
   text-decoration: none;
   transition: all 0.2s;
 }
 a:hover {
-  color: #66ccff;
-  text-shadow: 0 0 8px #66ccff;
+  color: #FF6347;
+  text-shadow: 0 0 8px #FF6347;
   transform: scale(1.02);
 }
 
@@ -208,7 +207,7 @@ footer {
 <!-- Raindrops container -->
 <div class="rain-container" id="rain"></div>
 
-<!-- Centered content box -->
+<!-- Centered content -->
 <div class="content-wrapper">
   <div class="content-box">
 
@@ -284,7 +283,7 @@ footer {
       </ul>
     </section>
 
-    <!-- Contact Info -->
+    <!-- Contact -->
     <section id="contact">
       <h2>Contact</h2>
       <p><strong>Discord:</strong> <a href="https://discord.com/users/cowinspaceyuh" target="_blank">cowinspaceyuh</a></p>
@@ -299,37 +298,38 @@ footer {
   </div>
 </div>
 
-<!-- Script to generate very heavy, seamless rain -->
+<!-- Script to generate very heavy, seamless red rain -->
 <script>
-// Generate very heavy rain with more drops that loop seamlessly
+// Generate very heavy red rain with smooth looping
 const rainContainer = document.getElementById('rain');
-const numberOfDrops = 1000; // Even heavier rain
+const numberOfDrops = 1000;
 
 for (let i = 0; i < numberOfDrops; i++) {
   const drop = document.createElement('div');
   drop.className = 'raindrop';
 
-  // Random horizontal position
+  // Random position
   drop.style.left = Math.random() * 100 + '%';
 
-  // Random duration between 0.3s and 0.8s for heavier rain
+  // Random duration between 0.3s and 0.8s
   const duration = (0.3 + Math.random() * 0.5).toFixed(2) + 's';
   drop.style.setProperty('--duration', duration);
 
-  // Random height between 10px and 25px
+  // Random height
   const height = (10 + Math.random() * 15).toFixed(0) + 'px';
   drop.style.setProperty('--height', height);
 
-  // Random rotation for realism
+  // Random rotation
   const rotation = (Math.random() * 30 - 15).toFixed(2) + 'deg';
   drop.style.setProperty('--rotation', rotation);
 
-  // Random delay for natural distribution
+  // Random delay
   drop.style.animationDelay = (Math.random() * 2).toFixed(2) + 's';
 
-  // Optional: slightly vary opacity
+  // Opacity variation
   drop.style.opacity = (0.3 + Math.random() * 0.2).toFixed(2);
 
+  // Change the color to red (already in CSS)
   rainContainer.appendChild(drop);
 }
 </script>
